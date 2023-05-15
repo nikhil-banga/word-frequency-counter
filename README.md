@@ -1,70 +1,69 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Word Frequency Counter
 
-## Available Scripts
 
-In the project directory, you can run:
+This project is a web application that fetches data from the **terriblytinytales** **https://www.terriblytinytales.com/test.txt** API and displays the word frequency in a histogram format. It provides an interface for users to export the word frequency data as a CSV file and toggle between light and dark themes. The project is built using React and utilizes several libraries and plugins.
 
-### `npm start`
+## Deployment on firebase
+**https://terriblytinytales.web.app/**
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Tech Stack
 
-### `npm test`
+**Client:** React, react-csv, react-router-dom, echarts-for-react, TailwindCSS.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**React:** A JavaScript library for building user interfaces.
 
-### `npm run build`
+**React Router:** A library for declarative routing in React applications.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**React Hooks:** Used to manage state and lifecycle methods in functional components.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+**react-csv:** Used to generate a CSV file from the word frequency data.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+**echarts-for-react:** Used to render the histogram and pie chart visualizations.
 
-### `npm run eject`
+## Code Explanation
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### App.js
+This file sets up the main component of the application. It imports the required dependencies and defines the routes for the Submit and Histogram components using React Router. The routes are configured to render the corresponding components when the URL path matches.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Histogram.jsx
+This component is responsible for fetching the data from the terriblytinytales API and processing it to determine word frequency. It utilizes the useEffect hook to perform the data fetching when the component mounts. The fetched data is cleaned and processed to remove special characters, convert all words to lowercase, and count the frequency of each word. The top 20 words with the highest frequency are selected for display.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+The component also includes functionality to toggle between light and dark themes. The current theme is stored in the theme state variable, and clicking the "Dark Theme" or "Light Theme" button updates the theme accordingly.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+The word frequency data is visualized using either a bar graph or a pie chart, depending on the selected graph type. The graph type is stored in the graphType state variable and can be changed using the dropdown menu. The visualization is achieved using the ReactECharts component from the echarts-for-react library.
 
-## Learn More
+The component includes a function convertToCSV that converts the word frequency data into a format suitable for exporting as a CSV file. The CSVLink component from the react-csv library is used to generate a download link for the CSV file.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Submit.jsx
+This component serves as the landing page of the application. It displays a button labeled "Submit Button" and a message to prompt the user to click the button to plot the histogram data. When the button is clicked, the component uses the useNavigate hook from React Router to navigate the user to the Histogram component.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Running the Project
 
-### Code Splitting
+### Run Locally
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Clone the project
 
-### Analyzing the Bundle Size
+```bash
+  git clone https://github.com/nikhil-banga/word-frequency-counter
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Go to the project directory
 
-### Making a Progressive Web App
+```bash
+  cd word-frequency-counter
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Install dependencies
 
-### Advanced Configuration
+```bash
+  npm install
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Start the server
 
-### Deployment
+```bash
+  npm run start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
